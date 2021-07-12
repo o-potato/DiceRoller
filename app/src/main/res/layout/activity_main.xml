@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/rollButton"
+        android:layout_width="113dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/roll_button"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63"
+        tools:srcCompat="@drawable/dice_1"
+        tools:visibility="visible" />
+
+    <Switch
+        android:id="@+id/cheatSwitch"
+        android:layout_width="341dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/toCheat"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#7E7A7A"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:checked="false" />
+
+    <Button
+        android:id="@+id/autoButton"
+        android:layout_width="168dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/auto"
+        android:textColor="@color/dark_background"
+        android:textSize="16sp"
+        android:typeface="normal"
+        app:backgroundTint="@color/white_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/manualButton"
+        android:layout_width="172dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/manual"
+        android:textColor="@color/white_background"
+        android:textSize="16sp"
+        android:typeface="normal"
+        app:backgroundTint="@color/dark_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/autoButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/targetTextView"
+        android:layout_width="342dp"
+        android:layout_height="142dp"
+        android:background="@drawable/border"
+        android:gravity="center|start"
+        android:includeFontPadding="false"
+        android:paddingLeft="20dp"
+        android:paddingTop="48dp"
+        android:text="@string/target"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/autoButton" />
+
+    <TextView
+        android:id="@+id/autoTarget"
+        android:layout_width="51dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="@string/init"
+        android:textSize="34sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/targetTextView"
+        app:layout_constraintEnd_toEndOf="@+id/targetTextView"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="@+id/targetTextView"
+        app:layout_constraintTop_toTopOf="@+id/targetTextView"
+        app:layout_constraintVertical_bias="0.707"
+        tools:text="1"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/clickButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/click"
+        android:textSize="16sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/targetTextView"
+        app:layout_constraintEnd_toEndOf="@+id/targetTextView"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintStart_toEndOf="@+id/autoTarget"
+        app:layout_constraintTop_toTopOf="@+id/targetTextView"
+        app:layout_constraintVertical_bias="0.617"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="60dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="numberSigned|none|numberDecimal"
+        android:text="@string/manual_init"
+        android:textSize="34sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/targetTextView"
+        app:layout_constraintEnd_toStartOf="@+id/plusImageButton"
+        app:layout_constraintStart_toEndOf="@+id/minusImageButton"
+        app:layout_constraintTop_toBottomOf="@+id/manualButton"
+        app:layout_constraintVertical_bias="0.457"
+        tools:visibility="invisible" />
+
+    <ImageButton
+        android:id="@+id/plusImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:adjustViewBounds="true"
+        android:background="#e0000000"
+        android:contentDescription="@string/plus"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/targetTextView"
+        app:layout_constraintEnd_toEndOf="@+id/targetTextView"
+        app:layout_constraintTop_toBottomOf="@+id/manualButton"
+        app:srcCompat="@drawable/plus"
+        tools:visibility="invisible" />
+
+    <ImageButton
+        android:id="@+id/minusImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginLeft="132dp"
+        android:background="#e0000000"
+        android:contentDescription="@string/minus"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/targetTextView"
+        app:layout_constraintStart_toStartOf="@+id/targetTextView"
+        app:layout_constraintTop_toBottomOf="@+id/autoButton"
+        app:layout_constraintVertical_bias="0.555"
+        app:srcCompat="@drawable/minus"
+        tools:visibility="invisible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

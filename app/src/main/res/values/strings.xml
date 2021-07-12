@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">DiceRoller</string>
+    <string name="roll_button">Roll</string>
+    <string name="result">Your result:</string>
+    <string name="toCheat">Want to cheat?</string>
+    <string name="auto">Auto</string>
+    <string name="manual">Manual</string>
+    <string name="target">Target :</string>
+    <string name="click">Get it!</string>
+    <string name="init">\u003F</string>
+    <string name="plus">plus</string>
+    <string name="minus">minus</string>
+    <string name="manual_init">1</string>
+    <string name="no_target_title">NO TARGET</string>
+    <string name="no_target">You have not set a target!</string>
+    <string name="set">set</string>
+    <string name="no_need">no need</string>
+    <string name="cong">Congratulations!</string>
+    <string name="succ">You have achieved your goal!</string>
+</resources>

@@ -42,6 +42,20 @@ class MainActivity : AppCompatActivity() {
         //auto button logic
         //auto mode by default
         //when in manual mode, click auto button to switch to auto mode
+        auto.setOnClickListener(object: ProxyClickListener() {
+            override fun doOnClick(v: View) {
+                auto.setTextColor(dark)
+                auto.setBackgroundColor(light)
+                manual.setTextColor(light)
+                manual.setBackgroundColor(dark)
+                getIt.visibility = View.VISIBLE
+                autoTargetTextView.visibility = View.VISIBLE
+                input.visibility = View.INVISIBLE
+                minus.visibility = View.INVISIBLE
+                plus.visibility = View.INVISIBLE
+            }
+        })
+        /*
         auto.setOnClickListener {
             auto.setTextColor(dark)
             auto.setBackgroundColor(light)
@@ -52,10 +66,24 @@ class MainActivity : AppCompatActivity() {
             input.visibility = View.INVISIBLE
             minus.visibility = View.INVISIBLE
             plus.visibility = View.INVISIBLE
-        }
+        }*/
 
         //manual button logic
         //when in auto mode, click manual button to switch to manual mode
+        manual.setOnClickListener(object : ProxyClickListener(){
+            override fun doOnClick(v: View) {
+                manual.setTextColor(dark)
+                manual.setBackgroundColor(light)
+                auto.setTextColor(light)
+                auto.setBackgroundColor(dark)
+                getIt.visibility = View.INVISIBLE
+                autoTargetTextView.visibility = View.INVISIBLE
+                input.visibility = View.VISIBLE
+                minus.visibility = View.VISIBLE
+                plus.visibility = View.VISIBLE
+            }
+        })
+        /*
         manual.setOnClickListener {
             manual.setTextColor(dark)
             manual.setBackgroundColor(light)
@@ -66,19 +94,40 @@ class MainActivity : AppCompatActivity() {
             input.visibility = View.VISIBLE
             minus.visibility = View.VISIBLE
             plus.visibility = View.VISIBLE
-        }
+        }*/
 
         var target = 0
 
         //GET IT button logic
         //click GET IT button to auto choose a target
         //and show the target
+        getIt.setOnClickListener(object : ProxyClickListener(){
+            override fun doOnClick(v: View) {
+                target = (1..6).random()
+                autoTargetTextView.text = target.toString()
+            }
+        })
+        /*
         getIt.setOnClickListener{
             target = (1..6).random()
             autoTargetTextView.text = target.toString()
-        }
+        }*/
 
         //plus button logic
+        plus.setOnClickListener(object : ProxyClickListener(){
+            override fun doOnClick(v: View) {
+                target = input.text.toString().toInt()
+                if(target < 6){
+                    target++
+                    input.setText(target.toString())
+                }
+                else{
+                    Toast.makeText(this@MainActivity, "Already the max target!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        })
+        /*
         plus.setOnClickListener {
             target = input.text.toString().toInt()
             if(target < 6){
@@ -89,9 +138,23 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Already the max target!", Toast.LENGTH_SHORT)
                     .show()
             }
-        }
+        }*/
 
         //minus button logic
+        minus.setOnClickListener(object : ProxyClickListener(){
+            override fun doOnClick(v: View) {
+                target = input.text.toString().toInt()
+                if(target > 1){
+                    target--
+                    input.setText(target.toString())
+                }
+                else{
+                    Toast.makeText(this@MainActivity, "Already the min target!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        })
+        /*
         minus.setOnClickListener {
             target = input.text.toString().toInt()
             if(target > 1){
@@ -102,7 +165,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Already the min target!", Toast.LENGTH_SHORT)
                     .show()
             }
-        }
+        }*/
 
         //EditText logic
         //check: 1 <= input <= 6
@@ -117,6 +180,27 @@ class MainActivity : AppCompatActivity() {
         //if wantToCheat is on, check if there is a target
         //show noTargetDialog unless a target is set
         //otherwise, roll normally
+        rollButton.setOnLongClickListener(object : ProxyLongClickListener(){
+            override fun doOnLongClick(v: View) {
+                if(wantToCheat){
+                    if(target == 0){
+                        showNoTargetDialog()
+                    }
+                    else{
+                        setImage(target, imageView)
+                        showSuccessDialog()
+                    }
+                }
+                else{
+                    if(rollDice() == target){
+                        showSuccessDialog()
+                    }
+                }
+                //rollDice(wantToCheat)
+                //true
+            }
+        })
+        /*
         rollButton.setOnLongClickListener {
             if(wantToCheat){
                 if(target == 0){
@@ -134,14 +218,23 @@ class MainActivity : AppCompatActivity() {
             }
             //rollDice(wantToCheat)
             true
-        }
+        }*/
+
         //for short click:
         //roll normally
+        rollButton.setOnClickListener(object : ProxyClickListener(){
+            override fun doOnClick(v: View) {
+                if(rollDice() == target){
+                    showSuccessDialog()
+                }
+            }
+        })
+        /*
         rollButton.setOnClickListener {
             if(rollDice() == target){
                 showSuccessDialog()
             }
-        }
+        }*/
     }
 
     private fun showNoTargetDialog(){
